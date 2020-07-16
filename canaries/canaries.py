@@ -18,6 +18,9 @@ class canaries():
 
     @staticmethod
     def _xdll(path):
+        """
+        Load a library using the appropriate method.
+        """
         system = platform.system()
         xdll = cdll
         if system == 'Windows':
@@ -27,6 +30,10 @@ class canaries():
 
     @staticmethod
     def _probe(lib):
+        """
+        Probe whether a library has a correctly implemented
+        verification method.
+        """
         # Build input and output buffers.
         treat = create_string_buffer(5)
         for (i, c) in enumerate('treat'):
@@ -49,6 +56,9 @@ class canaries():
 
     @staticmethod
     def _isolated(path):
+        """
+        Method to be used by isolated probe process.
+        """
         return canaries._probe(canaries._xdll(path))
 
     @staticmethod

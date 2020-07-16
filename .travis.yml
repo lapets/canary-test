@@ -4,6 +4,8 @@ notifications:
     on_failure: always
 language: python
 python:
+  - "3.6"
+  - "3.7"
   - "3.8"
 cache: pip
 addons:
@@ -17,9 +19,12 @@ install:
   - pip install pylint
   - pip install coveralls
   - pip install .
-script:
   - cd test
   - mkdir target
   - make all
   - cd ..
+script:
+  - pylint canaries
   - nosetests
+after_success:
+  - coveralls
