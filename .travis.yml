@@ -11,7 +11,7 @@ matrix:
         - choco install python --version=3.8.3
         - cd test
         - mkdir target
-        - make-msvc
+        - Make-msvc.bat
         - cd ..
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
       install:
