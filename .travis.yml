@@ -2,10 +2,10 @@ notifications:
   email:
     on_success: never
     on_failure: always
-sudo: false
-language: cpp
-compiler:
-  - gcc
+language: python
+python:
+  - "3.8"
+cache: pip
 addons:
   apt:
     sources:
@@ -15,7 +15,9 @@ addons:
       - g++-6
 install:
   - "[ $CXX = g++ ] && export CXX=g++-6 || true"
-  - pip install nose
+  - pip install pylint
+  - pip install coveralls
+  - pip install .
 script:
   - cd test
   - make all
