@@ -15,6 +15,3 @@ runtime: source/test.error.runtime.cpp Makefile
 
 clean:
 	$(RM) $(ALL) *.o
-
-test: all
-	bash test
