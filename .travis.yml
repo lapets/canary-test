@@ -9,12 +9,13 @@ compiler:
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test
-    - llvm-toolchain-precise-3.8
+      - ubuntu-toolchain-r-test
+      - llvm-toolchain-precise-3.8
     packages:
-    - g++-6
+      - g++-6
 install:
-- "[ $CXX = g++ ] && export CXX=g++-6 || true"
+  - "[ $CXX = g++ ] && export CXX=g++-6 || true"
+  - pip install nose
 script:
   - cd test
   - make all
