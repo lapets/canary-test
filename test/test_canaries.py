@@ -9,6 +9,9 @@ class Test_canaries(TestCase):
         self.assertIsNotNone(lib)
         self.assertTrue(canaries._probe(lib))
 
+    def test_isolated(self):
+        self.assertTrue(canaries._isolated('./test/target/test.error.none.l'))
+
     def test_canary(self):
         lib = canary(system(), './test/target/test.error.none.l')
         self.assertIsNotNone(lib)

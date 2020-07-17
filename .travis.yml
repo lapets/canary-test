@@ -17,7 +17,7 @@ matrix:
             - llvm-toolchain-precise-3.8
           packages:
             - g++-6
-      befoe_install:
+      before_install:
         - cd test
         - mkdir target
         - make all
