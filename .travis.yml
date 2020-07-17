@@ -14,7 +14,6 @@ addons:
     packages:
       - g++-6
 install:
-  - "[ $CXX = g++ ] && export CXX=g++-6 || true"
   - pip install pylint
   - pip install coveralls
   - pip install .
