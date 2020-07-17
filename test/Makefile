@@ -1,4 +1,4 @@
-CXXFLAGS = -g -Wall -Wfatal-errors -std=c++14
+CXXFLAGS = -g -Wall -Wfatal-errors -std=c++14 -c -fPIC
 
 ALL = none logic runtime
 
