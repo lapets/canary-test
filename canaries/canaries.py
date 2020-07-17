@@ -8,7 +8,7 @@ import doctest
 import sys
 import os.path
 import platform
-from ctypes import cdll, windll, create_string_buffer
+from ctypes import cdll, create_string_buffer
 
 class canaries():
     """
@@ -82,8 +82,11 @@ class canaries():
         # Only attempt to load object files that exist.
         if os.path.exists(path):
             try:
-                # Load the library.
-                xdll = windll if system == 'Windows' else cdll
+                # Load the library using the system-specific method.
+                xdll = cdll
+                if system == 'Windows':
+                    # pylint: disable=import-not-at-top
+                    from ctypes import windll as xdll # pragma: no cover
                 lib = xdll.LoadLibrary(path)
 
                 if lib is not None:
