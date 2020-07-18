@@ -4,11 +4,41 @@ notifications:
     on_failure: always
 matrix:
   include:
+    - os: linux
+      language: python
+      python:
+        - "3.6"
+        - "3.7"
+        - "3.8"
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.8
+          packages:
+            - g++-6
+      before_install:
+        - cd test
+        - mkdir target
+        - make all
+        - cd ..
+      install:
+        - pip install pylint
+        - pip install coveralls
+        - pip install .
     - os: windows
       language: sh
       before_install:
         - choco install visualstudio2017-workload-vctools -y
         - choco install python --version=3.8.3
+        - cd test
+        - mkdir target
+        - ./make-msvc
+        - ls
+        - cd target
+        - ls
+        - cd ..
+        - cd ..
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
       install:
         - pip install pylint
@@ -16,10 +46,6 @@ matrix:
         - pip install coveralls
         - pip install .
 script:
-  - cd test
-  - mkdir target
-  - ./Make-msvc.bat
-  - cd ..
   - pylint canaries
   - nosetests
 after_success:
