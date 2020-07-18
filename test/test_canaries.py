@@ -12,11 +12,11 @@ class Test_canaries(TestCase):
         lib = canary(system(), './test/target/test.error.none.l')
         self.assertIsNotNone(lib)
 
-    '''
     def test_load_input_type_error(self):
         with self.assertRaises(TypeError):
             lib = load(123)
 
+    '''
     def test_load_paths_type_error(self):
         with self.assertRaises(TypeError):
             lib = load({'Linux': 123})
@@ -47,8 +47,8 @@ class Test_canaries(TestCase):
 
     def test_load_dict(self):
         lib = load({
-            'Linux': [],
-            'Darwin': [],
+            'Linux': ['./test/target/test.error.none.l'],
+            'Darwin': ['./test/target/test.error.none.l'],
             'Windows': ['./test/target/test.error.none.l']
         })
         self.assertIsNotNone(lib)
