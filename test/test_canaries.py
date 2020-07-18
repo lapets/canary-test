@@ -1,10 +1,15 @@
 from unittest import TestCase
+from platform import system
 
 from canaries.canaries import *
 
 class Test_canaries(TestCase):
+    def test_probe(self):
+        lib = canary(system(), './test/target/test.error.none.l')
+        self.assertTrue(canaries._probe(lib))
+
     def test_canary(self):
-        lib = canary('Windows', './test/target/test.error.none.l')
+        lib = canary(system(), './test/target/test.error.none.l')
         self.assertIsNotNone(lib)
 
     def test_load_input_type_error(self):
