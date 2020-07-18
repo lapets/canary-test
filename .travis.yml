@@ -4,6 +4,28 @@ notifications:
     on_failure: always
 matrix:
   include:
+    - os: linux
+      language: python
+      python:
+        - "3.8"
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.8
+          packages:
+            - g++-6
+      before_install:
+        - cd test
+        - mkdir target
+        - make all
+        - cd ..
+      install:
+        - pip install pylint
+        - pip install coveralls
+        - pip install .
+      after_success:
+        - coveralls
     - os: windows
       language: sh
       before_install:
@@ -21,5 +43,3 @@ matrix:
 script:
   - pylint canaries
   - nosetests
-after_success:
-  - coveralls
