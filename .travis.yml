@@ -9,12 +9,13 @@ matrix:
       before_install:
         - choco install visualstudio2017-workload-vctools -y
         - choco install python --version=3.8.3
-        - cd test
-        - mkdir target
-        - Make-msvc.bat
-        - cd ..
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
       install:
+        - PowerShell -Command 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned'
+        - PowerShell -Command 'cd test'
+        - PowerShell -Command 'mkdir target'
+        - PowerShell -Command 'Make-msvc.bat'
+        - PowerShell -Command 'cd ..'
         - pip install pylint
         - pip install nose
         - pip install coveralls
