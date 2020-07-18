@@ -121,7 +121,8 @@ class canaries():
             try:
                 # Invoke compatibility validation method.
                 with Pool(1) as p:
-                    if p.map(canaries._isolated, [path])[0]:
+                    task = p.imap(canaries._isolated, [path])
+                    if task.next(5): # Process has five seconds to succeedd.
                         lib = canaries._xdll(path)
             except:
                 self.exceptions.append((

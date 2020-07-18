@@ -6,6 +6,7 @@ from canaries.canaries import *
 class Test_canaries(TestCase):
     def test_probe(self):
         lib = canary(system(), './test/target/test.error.none.l')
+        self.assertIsNotNone(lib)
         self.assertTrue(canaries._probe(lib))
 
     def test_canary(self):
@@ -28,9 +29,9 @@ class Test_canaries(TestCase):
         lib = load('./test/target/test.error.logic.l')
         self.assertIsNone(lib)
 
-    #def test_load_error_runtime(self):
-    #    lib = load('./test/target/test.error.runtime.l')
-    #    self.assertIsNone(lib)
+    def test_load_error_runtime(self):
+        lib = load('./test/target/test.error.runtime.l')
+        self.assertIsNone(lib)
 
     def test_load_str(self):
         lib = load('./test/target/test.error.none.l')
