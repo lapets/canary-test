@@ -18,7 +18,7 @@ matrix:
 script:
   - cd test
   - mkdir target
-  - Make-msvc.bat
+  - ./Make-msvc.bat
   - cd ..
   - pylint canaries
   - nosetests
