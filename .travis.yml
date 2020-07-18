@@ -7,7 +7,7 @@ matrix:
     - os: windows
       language: sh
       before_install:
-        - choco install visualstudio2017-workload-vctools -y
+        - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
         - choco install python --version=3.8.3
         - cd test
         - mkdir target
