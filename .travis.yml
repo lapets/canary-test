@@ -4,28 +4,6 @@ notifications:
     on_failure: always
 matrix:
   include:
-    - os: linux
-      language: python
-      python:
-        - "3.6"
-        - "3.7"
-        - "3.8"
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.8
-          packages:
-            - g++-6
-      before_install:
-        - cd test
-        - mkdir target
-        - make all
-        - cd ..
-      install:
-        - pip install pylint
-        - pip install coveralls
-        - pip install .
     - os: windows
       language: sh
       before_install:
@@ -33,7 +11,7 @@ matrix:
         - choco install python --version=3.8.3
         - cd test
         - mkdir target
-        - ./make-msvc
+        - ./Make-msvc.bat
         - ls
         - cd target
         - ls
