@@ -20,19 +20,17 @@ class Test_canaries(TestCase):
         with self.assertRaises(TypeError):
             lib = load({'Linux': 123})
 
-    '''
     def test_load_error_invalid(self):
         lib = load('./test/target/test.error.invalid.l')
         self.assertIsNone(lib)
-    '''
 
     def test_load_error_logic(self):
         lib = load('./test/target/test.error.logic.l')
         self.assertIsNone(lib)
 
-    def test_load_error_runtime(self):
-        lib = load('./test/target/test.error.runtime.l')
-        self.assertIsNone(lib)
+    #def test_load_error_runtime(self):
+    #    lib = load('./test/target/test.error.runtime.l')
+    #    self.assertIsNone(lib)
 
     def test_load_str(self):
         lib = load('./test/target/test.error.none.l')

@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -g -Wall -std=c++14 -c -fPIC
 
-ALL = none logic runtime
+ALL = none logic runtime invalid
 
 all: $(ALL)
 
@@ -16,3 +16,6 @@ logic:
 runtime:
 	$(CXX) $(CXXFLAGS) -o target/test.error.runtime.o source/test.error.runtime.cpp
 	${CXX} target/test.error.runtime.o -shared -o target/test.error.runtime.l
+
+invalid:
+	touch target/test.error.invalid.l
