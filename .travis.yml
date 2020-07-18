@@ -7,16 +7,11 @@ matrix:
     - os: windows
       language: sh
       before_install:
-        - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
-        - choco install python --version=3.8.3
         - cd test
         - mkdir target
-        - cd source
-        - cl test.error.none.cpp /LD
-        - cd ..
-        - copy "source/test.error.none.dll" "target\test.error.none.l"
         - ./Make-msvc.bat
         - cd ..
+        - choco install python --version=3.8.3
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
       install:
         - pip install pylint
