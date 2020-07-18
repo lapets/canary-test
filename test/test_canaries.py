@@ -30,11 +30,9 @@ class Test_canaries(TestCase):
         lib = load('./test/target/test.error.logic.l')
         self.assertIsNone(lib)
 
-    '''
     def test_load_error_runtime(self):
         lib = load('./test/target/test.error.runtime.l')
         self.assertIsNone(lib)
-    '''
 
     def test_load_str(self):
         lib = load('./test/target/test.error.none.l')
