@@ -12,6 +12,7 @@ class Test_canaries(TestCase):
         lib = canary(system(), './test/target/test.error.none.l')
         self.assertIsNotNone(lib)
 
+    '''
     def test_load_input_type_error(self):
         with self.assertRaises(TypeError):
             lib = load(123)
@@ -35,6 +36,7 @@ class Test_canaries(TestCase):
     def test_load_str(self):
         lib = load('./test/target/test.error.none.l')
         self.assertIsNotNone(lib)
+    '''
 
     def test_load_list(self):
         lib = load([
